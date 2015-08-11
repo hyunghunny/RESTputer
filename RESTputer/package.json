@@ -1,0 +1,10 @@
+﻿{
+  "name": "RESTputer",
+  "version": "0.0.0",
+  "description": "RESTputer",
+  "main": "app.js",
+  "author": {
+    "name": "형헌",
+    "email": ""
+  }
+}
