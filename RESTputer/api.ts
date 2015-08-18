@@ -1,9 +1,9 @@
-﻿
+﻿/*
 // load xmlhttprequest module if it is used in server side.
 if (typeof module !== 'undefined') {
     XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 }
-
+*/
 
 // logger
 enum LogFlag { All, Critical, Major };
@@ -90,8 +90,10 @@ class RESTTransmitter {
         var content = { "observations": [] };
         for (var i = 0; i < observations.length; i++) {
             var obs: Observation = observations[i];
+            console.log(obs.datePublished);
+            
             var observation = {
-                "timestamp": obs.datePublished.getTime(),
+                "timestamp": obs.datePublished,
                 "value": obs.value
             };
             content.observations.push(observation);
@@ -239,8 +241,10 @@ class AJAJSONManager {
     }
 };
 
+/*
 // exposes API if the script executes on server side.
 if (typeof module !== 'undefined') {
-    exports.transmitter = new RESTTransmitter('http://10.0.1.14:1337');
+    exports.transmitter = new RESTTransmitter('http://localhost:1337');
     //exports.logger = logger;
 }
+*/
