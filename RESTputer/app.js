@@ -1,4 +1,10 @@
-﻿var transmitter = require('./api.js').transmitter;
+﻿var transmitter = null;
+
+if (typeof module !== 'undefined') {
+    transmitter = require('./api.js').transmitter;
+} else {
+    transmitter = new RESTTransmitter('http://http://147.47.123.49:3000');
+}
 
 var id = 'webofthink';
 var password = ''; // anything can be ok.

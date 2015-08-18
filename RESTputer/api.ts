@@ -1,7 +1,8 @@
-﻿/*
+﻿
+/*
 // load xmlhttprequest module if it is used in server side.
-if (typeof module !== 'undefined') {
-    XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+if (typeof module !== 'undefined') {    
+XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 }
 */
 
@@ -33,7 +34,11 @@ class RESTTransmitter {
 
     private islogin = false;
 
-    constructor(public baseUrl : string) {
+    constructor(public baseUrl: string) {
+        if (baseUrl.indexOf('/', baseUrl.length - 1) !== -1) {
+            this.baseUrl = baseUrl.substring(0, baseUrl.length - 1);
+            //console.log(baseUrl);
+        }
     }
 
     private createAuthKey(id: string, password: string) : string {
@@ -244,7 +249,7 @@ class AJAJSONManager {
 /*
 // exposes API if the script executes on server side.
 if (typeof module !== 'undefined') {
-    exports.transmitter = new RESTTransmitter('http://localhost:1337');
+    exports.transmitter = new RESTTransmitter('http://localhost:3000');
     //exports.logger = logger;
 }
 */
