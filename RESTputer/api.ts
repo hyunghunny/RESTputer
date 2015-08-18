@@ -22,7 +22,7 @@ var logger = {
 logger.flag = LogFlag.All;
 
 interface Observation {
-    datePublished: Date;
+    datePublished: any;
     value: number;
 }
 
@@ -95,13 +95,16 @@ class RESTTransmitter {
         var content = { "observations": [] };
         for (var i = 0; i < observations.length; i++) {
             var obs: Observation = observations[i];
-            console.log(obs.datePublished);
-            
-            var observation = {
-                "timestamp": obs.datePublished,
-                "value": obs.value
-            };
-            content.observations.push(observation);
+            var datePublished = new Date(obs.datePublished);
+            if (datePublished instanceof Date) {
+                var observation = {
+                    "timestamp": datePublished.getTime(),
+                    "value": obs.value
+                };
+                content.observations.push(observation);
+            } else {
+                console.log('invalid date type: ' + datePublished);
+            }
         }
         var self = this;
         var ajajson = new AJAJSONManager(this.baseUrl);

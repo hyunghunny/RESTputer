@@ -7,7 +7,7 @@ if (typeof module !== 'undefined') {
 }
 
 var id = 'webofthink';
-var password = ''; // anything can be ok.
+var password = ''; // anything can be ok. (in this version only)
 
 var observations = [];
 var sensorId = 2;
@@ -24,7 +24,7 @@ for (var i = 0; i < 100; i++) {
         "datePublished" : ago.getTime(),
         "value" : i
     }
-    console.log(mockObs.datePublished);
+    //console.log(mockObs.datePublished);
     observations.push(mockObs);
 }
 
