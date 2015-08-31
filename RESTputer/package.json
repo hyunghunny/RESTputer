@@ -1,8 +1,8 @@
 {
-  "name": "RESTputer",
-  "version": "0.0.0",
-  "description": "RESTputer",
-  "main": "app.js",
+  "name": "sensorchart",
+  "version": "0.1.0",
+  "description": "SensorCharting through REST API",
+  "main": "api.js",
   "author": {
     "name": "webofthink",
     "email": "webofthink@tistory.com"

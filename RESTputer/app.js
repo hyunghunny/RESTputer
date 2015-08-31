@@ -1,10 +1,7 @@
-﻿var transmitter = null;
-
+﻿
 if (typeof module !== 'undefined') {
-    transmitter = require('./api.js').transmitter;
-} else {
-    transmitter = new RESTTransmitter('http://http://147.47.123.49:3000');
-}
+    var sensorchart = require("./api.js");    
+} 
 
 var id = 'webofthink';
 var password = ''; // anything can be ok. (in this version only)
@@ -28,10 +25,13 @@ for (var i = 0; i < 100; i++) {
     observations.push(mockObs);
 }
 
-transmitter.login(id, password, function (sender) {
-    if (sender) {
-        sender.emit(sensorId, observations, function (result) {
-            console.log('is it transmitted: ' + result);
+sensorchart.login(id, password, function (transmitter) {
+    if (transmitter) {
+        transmitter.emit(sensorId, observations, function (result) {
+            if (result == false) {
+                console.log('failed to transmit observations.');
+            }
+            
         });
     } else {
         console.log('login error!');

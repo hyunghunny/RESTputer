@@ -1,3 +1,3 @@
-﻿# RESTputer
+﻿# SensorChart RESTful Web API 
 
 
